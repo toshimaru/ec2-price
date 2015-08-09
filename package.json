@@ -1,6 +1,6 @@
 {
   "name": "ec2-price",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "index.js",
   "dependencies": {
     "columnify": "^1.5.1",
@@ -25,5 +25,6 @@
     "url": "https://github.com/toshimaru/ec2-price/issues"
   },
   "homepage": "https://github.com/toshimaru/ec2-price",
-  "description": "Get the latest EC2 price via a command line. "
+  "description": "Get the latest EC2 price via a command line. ",
+  "bin": "bin/ec2-price"
 }
