@@ -1,7 +1,29 @@
 {
+  "name": "ec2-price",
+  "version": "0.1.0",
+  "main": "index.js",
   "dependencies": {
     "columnify": "^1.5.1",
     "minimist": "^1.1.3",
     "node-fetch": "^1.3.2"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toshimaru/ec2-price.git"
+  },
+  "keywords": [
+    "ec2",
+    "aws"
+  ],
+  "author": "toshimaru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/toshimaru/ec2-price/issues"
+  },
+  "homepage": "https://github.com/toshimaru/ec2-price",
+  "description": "Get the latest EC2 price via a command line. "
 }
