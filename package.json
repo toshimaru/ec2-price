@@ -1,6 +1,6 @@
 {
   "name": "ec2-price",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "index.js",
   "dependencies": {
     "columnify": "^1.5.1",
