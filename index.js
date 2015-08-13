@@ -55,17 +55,31 @@ fetch(AWS_PRICE_JS_URL)
       var selected_region = (_region) ? obj.config.regions.filter(function(i) { return i.region == _region }) : obj.config.regions
 
       for (var region of selected_region) {
-        console.log('REGION: ' + region.region); 
-        console.log('----------------------'); 
+        console.log('REGION: ' + region.region) 
+        console.log('----------------------')
         var price_data = []
 
         for (var instanceType of region.instanceTypes) {
           for (var size of instanceType.sizes) {
-            price_data.push({
-              name: size.size,
-              price: size.valueColumns[0].prices.USD,
-              // "v-CPU": size.vCPU
-            });
+            data = {}
+
+            if (argv.v) {
+              data = { 
+                name: size.size,
+                "v-CPU": size.vCPU,
+                ECU: size.ECU,
+                memory: size.memoryGiB,
+                strorage: size.storageGB,
+                price: size.valueColumns[0].prices.USD,
+              }
+            } else {
+              data = {
+                name: size.size,
+                price: size.valueColumns[0].prices.USD,
+              }
+            }
+            
+            price_data.push(data);
           }
         }
         console.log(columnify(price_data));
