@@ -56,14 +56,18 @@ fetch(AWS_PRICE_JS_URL)
       for (var region of selected_region) {
         console.log('REGION: ' + region.region); 
         console.log('----------------------'); 
-        var price_data = {}
+        var price_data = []
 
         for (var instanceType of region.instanceTypes) {
           for (var size of instanceType.sizes) {
-            price_data[size.size] = '$' + size.valueColumns[0].prices.USD
+            price_data.push({
+              name: size.size,
+              price: size.valueColumns[0].prices.USD,
+              // "v-CPU": size.vCPU
+            });
           }
         }
-        console.log(columnify(price_data, { columns: ['Name', 'Price']}));
+        console.log(columnify(price_data));
         console.log(''); 
       }
     };
