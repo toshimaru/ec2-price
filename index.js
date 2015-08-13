@@ -1,5 +1,5 @@
-var fetch = require('node-fetch');
-var argv = require('minimist')(process.argv.slice(2));
+var fetch = require('node-fetch')
+var argv = require('minimist')(process.argv.slice(2))
 var columnify = require('columnify')
 
 const AWS_PRICE_JS_URL = 'http://a0.awsstatic.com/pricing/1/ec2/linux-od.min.js'
@@ -14,7 +14,7 @@ const AWS_REGIONS = [
   'us-gov-west-1',
   'us-west-1',
   'us-west-2',
-];
+]
 
 // help
 if (argv.h || argv.help) {
@@ -23,13 +23,14 @@ if (argv.h || argv.help) {
   console.log();
   console.log('Options:');
   console.log('  -h, --help       help message');
-  console.log('  -v, --version    version info');
-  console.log('  -r, --region [REGION] specify region (%s)');
+  console.log('  -v, --verbose    output price with the instance spec');
+  console.log('      --version    version info');
+  console.log('  -r, --region [REGION]   specify region (%s)');
   process.exit();
 }
 
 // version
-if (argv.v || argv.version) {
+if (argv.version) {
   console.log('Version: ' + require('./package').version);
   process.exit();
 }
