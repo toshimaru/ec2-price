@@ -3,7 +3,7 @@
 ec2-price
 ----
 
-Retrieve the latest EC2 price via a command line.
+Retrieve the latest EC2 prices via command line.
 
 ## Installation
 
@@ -25,13 +25,13 @@ You can specify a region.
 $ ec2-price --region us-east-1
 ```
 
-You can specify a type across all regions.
+You can specify a particular type across all regions.
 
 ````shell
 $ ec-price --type c4.2xlarge
 ````
 
-Finally, you can specify a region and type.
+You can specify a region and a particular type.
 
 ````shell
 $ ec2-price --region us-west-1 --type c4.2xlarge

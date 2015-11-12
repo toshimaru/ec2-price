@@ -25,6 +25,6 @@
     "url": "https://github.com/toshimaru/ec2-price/issues"
   },
   "homepage": "https://github.com/toshimaru/ec2-price",
-  "description": "Get the latest EC2 price via a command line.",
+  "description": "Get the latest EC2 prices via command line.",
   "bin": "bin/ec2-price"
 }
