@@ -22,11 +22,11 @@ if (argv.h || argv.help) {
   console.log('  ec2-price [-r region] [-t type]');
   console.log();
   console.log('Options:');
-  console.log('  -h, --help       help message');
-  console.log('  -v, --verbose    output price with the instance spec');
-  console.log('      --version    version info');
-  console.log('  -r, --region [REGION]   specify region (%s)');
-  console.log('  -t, --type [TYPE]   specify a type (%s)');
+  console.log('  -h, --help            help message');
+  console.log('  -v, --verbose         output price with the instance spec');
+  console.log('      --version         version info');
+  console.log('  -r, --region [REGION] specify a region');
+  console.log('  -t, --type [TYPE]     specify a type');
   process.exit();
 }
 
