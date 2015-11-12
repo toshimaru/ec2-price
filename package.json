@@ -1,6 +1,6 @@
 {
   "name": "ec2-price",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "index.js",
   "dependencies": {
     "columnify": "^1.5.1",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/toshimaru/ec2-price.git"
+    "url": "https://github.com/toshimaru/ec2-price.git"
   },
   "keywords": [
     "ec2",
@@ -25,6 +25,6 @@
     "url": "https://github.com/toshimaru/ec2-price/issues"
   },
   "homepage": "https://github.com/toshimaru/ec2-price",
-  "description": "Get the latest EC2 price via a command line. ",
+  "description": "Get the latest EC2 price via a command line.",
   "bin": "bin/ec2-price"
 }
