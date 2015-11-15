@@ -51,10 +51,14 @@ if (_region) {
 // type
 var _type = argv.t || argv.type;
 
+// verbose output
+var isVerbose = argv.v || argv.verbose;
+
 fetch(AWS_PRICE_JS_URL)
   .then(function(res) {
     return res.text();
-  }).then(function(body) {
+  })
+  .then(function(body) {
     var callback = function(obj) {
       var selected_region = (_region) ? obj.config.regions.filter(function(i) { return i.region == _region; }) : obj.config.regions;
 
@@ -68,10 +72,10 @@ fetch(AWS_PRICE_JS_URL)
             data = {};
 
             if(_type && size.size != _type) {
-                continue;
+              continue;
             }
 
-            if (argv.v || argv.verbose) {
+            if (isVerbose) {
               data = {
                 name: size.size,
                 "v-CPU": size.vCPU,
@@ -95,9 +99,9 @@ fetch(AWS_PRICE_JS_URL)
       }
     };
 
-    eval(body);
-  }).catch(function(e) {
+    eval(body); // callback function is called by `eval()`
+  })
+  .catch(function(e) {
     console.error(e);
     exit(1);
   });
-
