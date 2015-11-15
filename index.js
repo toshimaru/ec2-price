@@ -3,18 +3,6 @@ var argv = require('minimist')(process.argv.slice(2));
 var columnify = require('columnify');
 
 const AWS_PRICE_JS_URL = 'http://a0.awsstatic.com/pricing/1/ec2/linux-od.min.js';
-const AWS_REGIONS = [
-  'ap-northeast-1',
-  'ap-southeast-1',
-  'ap-southeast-2',
-  'eu-central-1',
-  'eu-west-1',
-  'sa-east-1',
-  'us-east-1',
-  'us-gov-west-1',
-  'us-west-1',
-  'us-west-2',
-];
 
 // help
 if (argv.h || argv.help) {
@@ -23,8 +11,8 @@ if (argv.h || argv.help) {
   console.log();
   console.log('Options:');
   console.log('  -h, --help            help message');
-  console.log('  -v, --verbose         output price with the instance spec');
-  console.log('      --version         version info');
+  console.log('  -v, --verbose         prices with instance specs');
+  console.log('      --version         version');
   console.log('  -r, --region [REGION] specify a region');
   console.log('  -t, --type [TYPE]     specify a type');
   process.exit();
@@ -36,23 +24,14 @@ if (argv.version) {
   process.exit();
 }
 
-// region check
+// region
 var _region = argv.r || argv.region;
-if (_region) {
-  if (AWS_REGIONS.indexOf(_region) < 0) {
-    console.log('invalid region');
-    console.log();
-    console.log('Available regions are:');
-    console.log(AWS_REGIONS.join('\n'));
-    process.exit(1);
-  }
-}
 
 // type
 var _type = argv.t || argv.type;
 
-// verbose output
-var isVerbose = argv.v || argv.verbose;
+// verbose
+var _verbose = argv.v || argv.verbose;
 
 fetch(AWS_PRICE_JS_URL)
   .then(function(res) {
@@ -75,7 +54,7 @@ fetch(AWS_PRICE_JS_URL)
               continue;
             }
 
-            if (isVerbose) {
+            if (_verbose) {
               data = {
                 name: size.size,
                 "v-CPU": size.vCPU,
