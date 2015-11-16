@@ -41,6 +41,14 @@ fetch(AWS_PRICE_JS_URL)
     var callback = function(obj) {
       var selected_region = (_region) ? obj.config.regions.filter(function(i) { return i.region == _region; }) : obj.config.regions;
 
+      if (selected_region.length === 0) {
+        console.error('Invalid region given');
+        console.log();
+        console.log('Available regions are:');
+        obj.config.regions.forEach(function(i) { console.log(i.region); } );
+        process.exit(1);
+      }
+
       for (var region of selected_region) {
         console.log('REGION: ' + region.region);
         console.log('----------------------');
