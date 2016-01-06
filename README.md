@@ -28,7 +28,7 @@ $ ec2-price --region us-east-1
 You can specify a particular type across all regions.
 
 ````shell
-$ ec-price --type c4.2xlarge
+$ ec2-price --type c4.2xlarge
 ````
 
 You can specify a region and a particular type.
