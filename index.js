@@ -15,6 +15,7 @@ if (argv.h || argv.help) {
   console.log('      --version         version');
   console.log('  -r, --region [REGION] specify a region');
   console.log('  -t, --type [TYPE]     specify a type');
+  console.log('  -j, --json            use JSON as an output format');
   process.exit();
 }
 
@@ -33,6 +34,9 @@ var _type = argv.t || argv.type;
 // verbose
 var _verbose = argv.v || argv.verbose;
 
+// JSON format
+var _json = argv.j || argv.json;
+
 fetch(AWS_PRICE_JS_URL)
   .then(function(res) {
     return res.text();
@@ -40,6 +44,7 @@ fetch(AWS_PRICE_JS_URL)
   .then(function(body) {
     var callback = function(obj) {
       var selected_region = (_region) ? obj.config.regions.filter(function(i) { return i.region == _region; }) : obj.config.regions;
+      var _json_result = {regions: []};
 
       if (selected_region.length === 0) {
         console.error('Invalid region given');
@@ -50,8 +55,13 @@ fetch(AWS_PRICE_JS_URL)
       }
 
       for (var region of selected_region) {
-        console.log('REGION: ' + region.region);
-        console.log('----------------------');
+        var _region_data = {};
+        if (_json) {
+          _region_data['region'] = region.region;
+        } else {
+          console.log('REGION: ' + region.region);
+          console.log('----------------------');
+        }
         var price_data = [];
 
         for (var instanceType of region.instanceTypes) {
@@ -81,8 +91,17 @@ fetch(AWS_PRICE_JS_URL)
             price_data.push(data);
           }
         }
-        console.log(columnify(price_data));
-        console.log('');
+        if (_json) {
+          _region_data['instances'] = price_data;
+          _json_result['regions'].push(_region_data)
+        } else {
+          console.log(columnify(price_data));
+          console.log('');
+        }
+      }
+
+      if (_json) {
+        console.log(JSON.stringify(_json_result));
       }
     };
 
