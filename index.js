@@ -2,7 +2,7 @@ var fetch = require('node-fetch');
 var argv = require('minimist')(process.argv.slice(2));
 var columnify = require('columnify');
 
-const AWS_PRICE_JS_URL = 'http://a0.awsstatic.com/pricing/1/ec2/linux-od.min.js';
+const AWS_PRICE_JS_URL = 'https://a0.awsstatic.com/pricing/1/ec2/linux-od.min.js';
 
 // help
 if (argv.h || argv.help) {
